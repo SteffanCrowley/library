@@ -20,23 +20,45 @@ function addBookToLibrary(title, author, numberofPages, readStatus) {
   myLibrary.push(newBook);
 }
 
+addBookToLibrary("BOOK", "henry", 213, true);
+addBookToLibrary("lord", "jeff", 213, true);
+addBookToLibrary("friends", "jose", 65, true);
+
 //function that draws the current board by iterating through
 //the current library array
 function submitBook(myLibrary) {
-  for (let i = 0; i < myLibrary.length, i++; ) {
-    let p = document.createElement("p");
-    p.textContent = "party time";
+  for (let i = 0; i < myLibrary.length; i++) {
+    let p;
+
+    //creates card
+    let div = document.createElement("div");
+    div.classList.add("card");
+    container.appendChild(div);
+
+    //Adds title to card
+    p = document.createElement("p");
+    div.classList.add("title");
+    p.textContent = myLibrary[i].title;
+    div.appendChild(p);
+
+    //Adds author to card
+    p = document.createElement("p");
+    div.classList.add("author");
+    p.textContent = myLibrary[i].author;
+    div.appendChild(p);
+
+    //Adds page count to card
+    p = document.createElement("p");
+    div.classList.add("page");
+    p.textContent = myLibrary[i].numberofPages;
+    div.appendChild(p);
+
+    //Adds read status to card
+    p = document.createElement("p");
+    div.classList.add("page");
+    p.textContent = myLibrary[i].readStatus;
+    div.appendChild(p);
   }
 }
 
-console.log(myLibrary);
-addBookToLibrary("BOOK", "henry", 213, true);
-console.log(myLibrary);
-
-// console.log(myLibrary);
-
-// console.log(theHobbit.toString());
-
-let div = document.createElement("div");
-div.textContent = "party time";
-container.appendChild(div);
+submitBook(myLibrary);
