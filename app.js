@@ -1,4 +1,11 @@
 const main = document.querySelector(".main");
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pageCount = document.querySelector("#page");
+
+const submitBtn = document.querySelector(".submit");
+
 let myLibrary = [];
 
 function Book(title, author, numberofPages, readStatus) {
@@ -19,21 +26,6 @@ function addBookToLibrary(title, author, numberofPages, readStatus) {
   const newBook = new Book(title, author, numberofPages, readStatus);
   myLibrary.push(newBook);
 }
-
-addBookToLibrary("BOOK", "henry", 213, "read");
-addBookToLibrary("lord", "jeff", 213, "read");
-addBookToLibrary("friends", "jose", 65, "read");
-addBookToLibrary("BOOK", "henry", 213, "read");
-addBookToLibrary("lord", "jeff", 213, "read");
-addBookToLibrary("friends", "jose", 65, "read");
-addBookToLibrary("BOOK", "henry", 213, "read");
-addBookToLibrary("lord", "jeff", 213, "read");
-addBookToLibrary("friends", "jose", 65, "read");
-addBookToLibrary("BOOK", "henry", 213, "read");
-addBookToLibrary("lord", "jeff", 213, "read");
-addBookToLibrary("friends", "jose", 65, "read");
-addBookToLibrary("BOOK", "henry", 213, "read");
-addBookToLibrary("lord", "jeff", 213, "read");
 
 //function that draws the current board by iterating through
 //the current library array
@@ -72,4 +64,14 @@ function submitBook(myLibrary) {
   }
 }
 
-submitBook(myLibrary);
+// submitBook(myLibrary);
+
+//add event lister to the submit button, when it gets hit, it takes
+//the form inputs and puts them in the library via addBookToLibrary()
+//it then runs submitBook and prints it on the page
+
+submitBtn.addEventListener("click", (event) => {
+  addBookToLibrary(title.value, author.value, pageCount.value, "NEW");
+  submitBook(myLibrary);
+  myLibrary = []; //clear the array so that only new items added.
+});
