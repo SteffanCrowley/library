@@ -12,10 +12,15 @@ function Book(title, author, numberofPages, readStatus) {
   };
 }
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(title, author, numberofPages, readStatus) {
+  const newBook = new Book(title, author, numberofPages, readStatus);
+  myLibrary.push(newBook);
 }
 
-// const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+console.log(myLibrary);
+addBookToLibrary("BOOK", "henry", 213, true);
+console.log(myLibrary);
+
+// console.log(myLibrary);
 
 // console.log(theHobbit.toString());
