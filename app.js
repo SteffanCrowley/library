@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const main = document.querySelector(".main");
 let myLibrary = [];
 
 function Book(title, author, numberofPages, readStatus) {
@@ -20,9 +20,20 @@ function addBookToLibrary(title, author, numberofPages, readStatus) {
   myLibrary.push(newBook);
 }
 
-addBookToLibrary("BOOK", "henry", 213, true);
-addBookToLibrary("lord", "jeff", 213, true);
-addBookToLibrary("friends", "jose", 65, true);
+addBookToLibrary("BOOK", "henry", 213, "read");
+addBookToLibrary("lord", "jeff", 213, "read");
+addBookToLibrary("friends", "jose", 65, "read");
+addBookToLibrary("BOOK", "henry", 213, "read");
+addBookToLibrary("lord", "jeff", 213, "read");
+addBookToLibrary("friends", "jose", 65, "read");
+addBookToLibrary("BOOK", "henry", 213, "read");
+addBookToLibrary("lord", "jeff", 213, "read");
+addBookToLibrary("friends", "jose", 65, "read");
+addBookToLibrary("BOOK", "henry", 213, "read");
+addBookToLibrary("lord", "jeff", 213, "read");
+addBookToLibrary("friends", "jose", 65, "read");
+addBookToLibrary("BOOK", "henry", 213, "read");
+addBookToLibrary("lord", "jeff", 213, "read");
 
 //function that draws the current board by iterating through
 //the current library array
@@ -33,29 +44,29 @@ function submitBook(myLibrary) {
     //creates card
     let div = document.createElement("div");
     div.classList.add("card");
-    container.appendChild(div);
+    main.appendChild(div);
 
     //Adds title to card
     p = document.createElement("p");
-    div.classList.add("title");
+    p.classList.add("title");
     p.textContent = myLibrary[i].title;
     div.appendChild(p);
 
     //Adds author to card
     p = document.createElement("p");
-    div.classList.add("author");
+    p.classList.add("author");
     p.textContent = myLibrary[i].author;
     div.appendChild(p);
 
     //Adds page count to card
     p = document.createElement("p");
-    div.classList.add("page");
+    p.classList.add("page");
     p.textContent = myLibrary[i].numberofPages;
     div.appendChild(p);
 
     //Adds read status to card
     p = document.createElement("p");
-    div.classList.add("page");
+    p.classList.add("page");
     p.textContent = myLibrary[i].readStatus;
     div.appendChild(p);
   }
