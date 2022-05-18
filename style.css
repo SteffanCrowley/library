@@ -21,8 +21,8 @@
   margin: 20px;
   display: grid;
   gap: 20px;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
 }
 
 .card {
@@ -39,3 +39,26 @@
 
 /* form {
 } */
+
+.close {
+  font-size: 1.3rem;
+  background-color: #f8628f;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: -1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+}
+
+button {
+  padding: 0.8rem 1.3rem;
+  font-size: 1.3rem;
+  background-color: #596d48;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: -1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+  width: 160px;
+  height: 50px;
+}

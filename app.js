@@ -5,9 +5,11 @@ const author = document.querySelector("#author");
 const pageCount = document.querySelector("#page");
 
 const submitBtn = document.querySelector(".submit");
+const closeBtn = document.querySelector(".close");
 
 let myLibrary = [];
 
+//constructor function for making new book entries
 function Book(title, author, numberofPages, readStatus) {
   this.title = title;
   this.author = author;
@@ -25,17 +27,18 @@ function Book(title, author, numberofPages, readStatus) {
 function addBookToLibrary(title, author, numberofPages, readStatus) {
   const newBook = new Book(title, author, numberofPages, readStatus);
   myLibrary.push(newBook);
+  console.log(myLibrary);
 }
 
 //function that draws the current board by iterating through
 //the current library array
 function submitBook(myLibrary) {
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
     let p;
-
+    let closeBtn;
     //creates card
     let div = document.createElement("div");
-    div.classList.add("card");
+    div.classList.add(`card`);
     main.appendChild(div);
 
     //Adds title to card
@@ -61,6 +64,17 @@ function submitBook(myLibrary) {
     p.classList.add("page");
     p.textContent = myLibrary[i].readStatus;
     div.appendChild(p);
+
+    //Adds close button to card
+    closeBtn = document.createElement("button");
+    closeBtn.classList.add("close");
+    closeBtn.textContent = "x";
+    div.appendChild(closeBtn);
+
+    //engage event listener for close button
+    closeBtn.addEventListener("click", (event) => {
+      main.removeChild(div);
+    });
   }
 }
 
@@ -73,5 +87,4 @@ function submitBook(myLibrary) {
 submitBtn.addEventListener("click", (event) => {
   addBookToLibrary(title.value, author.value, pageCount.value, "NEW");
   submitBook(myLibrary);
-  myLibrary = []; //clear the array so that only new items added.
 });
