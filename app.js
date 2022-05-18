@@ -3,6 +3,7 @@ const main = document.querySelector(".main");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pageCount = document.querySelector("#page");
+const readStatus = document.querySelector("#read");
 
 const submitBtn = document.querySelector(".submit");
 const closeBtn = document.querySelector(".close");
@@ -16,9 +17,11 @@ function Book(title, author, numberofPages, readStatus) {
   this.numberofPages = numberofPages;
   this.readStatus = readStatus;
   this.info = function () {
-    console.log(
-      title + " by " + author + ", " + numberofPages + ", " + readStatus
-    );
+    if (readStatus == true) {
+      return "read";
+    } else {
+      return "unread";
+    }
   };
 }
 
@@ -35,7 +38,9 @@ function addBookToLibrary(title, author, numberofPages, readStatus) {
 function submitBook(myLibrary) {
   for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
     let p;
+    let p1;
     let closeBtn;
+    let readBtn;
     //creates card
     let div = document.createElement("div");
     div.classList.add(`card`);
@@ -60,10 +65,16 @@ function submitBook(myLibrary) {
     div.appendChild(p);
 
     //Adds read status to card
-    p = document.createElement("p");
-    p.classList.add("page");
-    p.textContent = myLibrary[i].readStatus;
-    div.appendChild(p);
+    p1 = document.createElement("p");
+    p1.classList.add("page");
+    p1.textContent = myLibrary[i].info();
+    div.appendChild(p1);
+
+    //Adds read button to card
+    readBtn = document.createElement("button");
+    readBtn.classList.add("readBtn");
+    readBtn.textContent = "Read";
+    div.appendChild(readBtn);
 
     //Adds close button to card
     closeBtn = document.createElement("button");
@@ -75,6 +86,17 @@ function submitBook(myLibrary) {
     closeBtn.addEventListener("click", (event) => {
       main.removeChild(div);
     });
+
+    let x = myLibrary[i].readStatus;
+    //engage event listener for read button
+    readBtn.addEventListener("click", (event) => {
+      x = !x;
+      if (x == true) {
+        p1.textContent = "read";
+      } else {
+        p1.textContent = "unread";
+      }
+    });
   }
 }
 
@@ -85,6 +107,11 @@ function submitBook(myLibrary) {
 //it then runs submitBook and prints it on the page
 
 submitBtn.addEventListener("click", (event) => {
-  addBookToLibrary(title.value, author.value, pageCount.value, "NEW");
+  addBookToLibrary(
+    title.value,
+    author.value,
+    pageCount.value,
+    readStatus.checked
+  );
   submitBook(myLibrary);
 });
