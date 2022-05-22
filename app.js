@@ -11,18 +11,20 @@ const closeBtn = document.querySelector(".close");
 let myLibrary = [];
 
 //constructor function for making new book entries
-function Book(title, author, numberofPages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.numberofPages = numberofPages;
-  this.readStatus = readStatus;
-  this.info = function () {
-    if (readStatus == true) {
-      return "read";
-    } else {
-      return "unread";
-    }
-  };
+class Book {
+  constructor(title, author, numberofPages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.numberofPages = numberofPages;
+    this.readStatus = readStatus;
+    this.info = function () {
+      if (readStatus == true) {
+        return "read";
+      } else {
+        return "unread";
+      }
+    };
+  }
 }
 
 //function that uses book constructor to create new book and then adds
